@@ -1,0 +1,397 @@
+# St Peter's Pharmacy Windsurf Rules
+version: 1.1
+
+# Project Configuration
+project:
+  name: "St Peter's Pharmacy"
+  type: "next.js"
+  database: "supabase"
+  environment: "development"
+  description: "A modern pharmaceutical marketing, educational, and prescription management platform"
+
+# Directory Structure
+structure:
+  root:
+    - src/
+    - public/
+    - tests/
+    - supabase/
+    - content/    # Marketing and educational content
+  
+  src:
+    app:
+      - (auth)/        # Admin authentication only
+      - (dashboard)/   # Admin dashboard
+      - catalog/       # Product catalog and showcase
+      - education/     # Health tips and resources
+      - contact/       # Contact forms and information
+      - blog/          # Health articles and updates
+      - locations/     # Pharmacy locations
+      - about/         # Company information
+      - prescriptions/ # Prescription services
+        - refill/     # Refill request system
+        - services/   # Available prescription services
+        - booking/    # Consultation booking
+    
+    components:
+      - ui:
+          - forms/
+            - PrescriptionRefill.tsx
+            - ConsultationBooking.tsx
+          - buttons/
+          - cards/
+            - ServiceCard.tsx
+            - PrescriptionStatus.tsx
+          - modals/
+            - RefillConfirmation.tsx
+            - BookingSuccess.tsx
+          - catalog/     # Product display components
+          - navigation/
+      - features:
+          - content/      # Marketing content components
+          - testimonials/ # Customer testimonials
+          - catalog/      # Product showcase
+          - newsletter/   # Email subscription
+          - search/       # Product and content search
+          - prescriptions/
+            - RefillTracker.tsx
+            - ServicesList.tsx
+            - BookingCalendar.tsx
+      - layouts:
+          - header/
+          - hero/
+          - footer/
+          - sidebar/
+    
+    lib:
+      - actions:
+          - auth:
+              - login.ts
+              - register.ts
+              - verify.ts
+          - catalog:
+              - fetch-products.ts
+              - search.ts
+              - filter.ts
+          - marketing:
+              - subscribe-newsletter.ts
+              - contact-form.ts
+              - schedule-campaign.ts
+          - content:
+              - create-post.ts
+              - update-post.ts
+          - analytics:
+              - track-event.ts
+              - page-view.ts
+          - prescriptions:
+              - submit-refill.ts
+              - track-status.ts
+              - book-consultation.ts
+              - fetch-time-slots.ts
+      
+      - supabase:
+          - client.ts
+          - server.ts
+      
+      - utils:
+          - formatting.ts
+          - validation.ts
+          - seo.ts
+          - analytics.ts
+          - prescription-helpers.ts
+      
+      - hooks:
+          - use-auth.ts
+          - use-form.ts
+          - use-catalog.ts
+          - use-analytics.ts
+          - use-search.ts
+          - use-prescriptions.ts
+          - use-booking.ts
+    
+    types:
+      - database.ts
+      - supabase.ts
+      - analytics.ts
+      - prescriptions.ts
+
+# Content Structure
+content:
+  types:
+    - blog_posts
+    - health_tips
+    - product_information
+    - company_updates
+    - testimonials
+    - faqs
+    - prescription_guides
+    - medication_information
+    - service_descriptions
+
+# Supabase Configuration
+supabase:
+  schema:
+    auth:
+      - admin_profiles
+      - staff_profiles
+      - patient_profiles
+    
+    public:
+      tables:
+        - product_catalog:
+            rls: read_all
+            realtime: false
+            features:
+              - categories
+              - search
+              - filters
+        
+        - marketing_content:
+            rls: read_all
+            realtime: false
+            types:
+              - blog_posts
+              - health_tips
+              - announcements
+        
+        - testimonials:
+            rls: read_all
+            realtime: false
+        
+        - contact_inquiries:
+            rls: admin_only
+            realtime: true
+        
+        - newsletter_subscribers:
+            rls: admin_only
+            realtime: false
+        
+        - analytics_events:
+            rls: admin_only
+            realtime: false
+        
+        - locations:
+            rls: read_all
+            realtime: false
+
+        - prescription_refills:
+            rls: auth_only
+            realtime: true
+            features:
+              - status_tracking
+              - notifications
+              - history
+            columns:
+              - id
+              - patient_id
+              - prescription_number
+              - status
+              - preferred_pickup_time
+              - notes
+              - created_at
+              - updated_at
+
+        - prescription_services:
+            rls: read_all
+            realtime: false
+            features:
+              - categories
+              - pricing
+              - availability
+            columns:
+              - id
+              - name
+              - description
+              - duration
+              - price
+              - requires_consultation
+
+        - consultations:
+            rls: auth_only
+            realtime: true
+            features:
+              - scheduling
+              - reminders
+              - status_updates
+            columns:
+              - id
+              - patient_id
+              - service_id
+              - scheduled_time
+              - status
+              - notes
+              - created_at
+
+        - time_slots:
+            rls: read_all
+            realtime: true
+            features:
+              - availability
+              - booking
+            columns:
+              - id
+              - day_of_week
+              - start_time
+              - end_time
+              - is_available
+              - service_id
+  
+  storage:
+    buckets:
+      - catalog-images
+      - blog-images
+      - marketing-assets
+      - educational-content
+      - prescription-documents
+
+# Tech Stack
+tech_stack:
+  frontend:
+    framework:
+      name: "Next.js"
+      version: "14.x"
+      features:
+        - app_router
+        - server_components
+        - server_actions
+        - streaming
+    
+    styling:
+      primary: "tailwindcss"
+      components: "nextui"
+      utilities:
+        - name: "@headlessui/react"
+          version: "^2.1.8"
+        - name: "@heroicons/react"
+          version: "^2.1.5"
+    
+    state:
+      global: "zustand"
+      forms: "react-hook-form"
+      validation: "zod"
+    
+    data_fetching:
+      primary: "server_actions"
+      fallback: "tanstack-query"
+      caching: "react-cache"
+
+  backend:
+    primary: "Supabase"
+    features:
+      database:
+        type: "PostgreSQL"
+        version: "15.x"
+      auth:
+        providers:
+          - email
+      storage:
+        enabled: true
+      search:
+        enabled: true
+        type: "full_text"
+
+# Integration Specifications
+integrations:
+  communications:
+    push_notifications:
+      provider: "firebase-cloud-messaging"
+      config:
+        sdk: "@firebase/messaging"
+        packages:
+          - "firebase-admin"
+          - "firebase/messaging"
+        features:
+          - "web-push"
+          - "topic-messaging"
+          - "prescription-alerts"
+    
+    sms:
+      primary:
+        provider: "bulksmsnigeria"
+        config:
+          type: "rest-api"
+          authentication: "api-key"
+          endpoints:
+            - "send-sms"
+            - "delivery-reports"
+            - "prescription-notifications"
+        cost: "pay-per-use"
+    
+    email:
+      provider: "brevo"
+      config:
+        features:
+          - "transactional"
+          - "marketing-campaigns"
+          - "automation"
+          - "prescription-notifications"
+        limits:
+          free_tier:
+            emails_per_day: 300
+            contacts: "unlimited"
+  
+  analytics:
+    provider: "umami"
+    config:
+      type: "self-hosted"
+      deployment: "vercel"
+      features:
+        - "real-time-analytics"
+        - "campaign-tracking"
+        - "custom-events"
+        - "prescription-tracking"
+        - "gdpr-compliant"
+      database:
+        type: "postgresql"
+  
+  marketing:
+    seo:
+      features:
+        - "meta-tags"
+        - "sitemap-generation"
+        - "prescription-service-seo"
+        - "local-pharmacy-seo"
+
+# Prescription Features
+prescription_system:
+  features:
+    refill_requests:
+      - online_submission
+      - status_tracking
+      - notifications
+      - history_viewing
+    
+    consultation_booking:
+      - calendar_integration
+      - automatic_reminders
+      - cancellation_management
+      - rescheduling
+    
+    services:
+      - medication_review
+      - prescription_counseling
+      - insurance_consultation
+      - generic_alternatives
+    
+    educational_content:
+      - medication_guides
+      - safety_information
+      - insurance_guides
+      - video_tutorials
+
+  security:
+    - hipaa_compliance
+    - data_encryption
+    - access_control
+    - audit_logging
+
+  notifications:
+    channels:
+      - email
+      - sms
+      - push
+    events:
+      - refill_ready
+      - appointment_reminder
+      - status_update
+      - prescription_expiring
