@@ -1,5 +1,11 @@
 # St Peter's Pharmacy Platform
 
+<div align="center">
+  <img src="public/project-info/page-presentation.png" alt="St Peter's Pharmacy Platform Preview" width="100%" />
+</div>
+
+## Overview
+
 A modern pharmaceutical marketing, educational, and prescription management platform built with Next.js and Supabase.
 
 ## Features
