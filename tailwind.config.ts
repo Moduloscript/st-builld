@@ -33,6 +33,9 @@ module.exports = {
         "glow-pulse": "glow-pulse 4s ease-in-out infinite",
         'gradient-x': 'gradient-x 3s ease infinite',
         'glow-y': 'glow-y 2s ease-in-out infinite',
+        'scroll-up': 'scroll-up var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite',
+        'scroll-down': 'scroll-down var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite',
+        'scroll': 'scroll 40s linear infinite',
       },
       keyframes: {
         "fade-in": {
@@ -82,6 +85,21 @@ module.exports = {
             'transform': 'translateY(100%)'
           }
         },
+        'scroll-up': {
+          to: {
+            transform: 'translateY(calc(-50%))',
+          },
+        },
+        'scroll-down': {
+          to: {
+            transform: 'translateY(calc(50%))',
+          },
+        },
+        'scroll': {
+          to: {
+            transform: 'translateX(calc(-50%))',
+          },
+        },
       },
     },
   },
@@ -99,6 +117,16 @@ module.exports = {
         },
         { values: flattenColorPalette(theme("backgroundColor")), type: "color" }
       );
+    },
+    function addVariablesForColors({ addBase, theme }: any) {
+      let allColors = flattenColorPalette(theme("colors"));
+      let newVars = Object.fromEntries(
+        Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+      );
+
+      addBase({
+        ":root": newVars,
+      });
     },
   ],
 }

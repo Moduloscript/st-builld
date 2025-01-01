@@ -99,7 +99,7 @@ const logos: Logo[] = [
 
 const LogoScroll = ({ logos }: { logos: Logo[] }) => {
   return (
-    <div className="flex animate-scroll gap-10 sm:gap-14">
+    <div className="flex overflow-x-scroll gap-10 sm:gap-14">
       {logos.map((logo) => (
         <div 
           key={logo.name}
@@ -153,8 +153,38 @@ export const Logos = () => {
           {/* Infinite Scroll Container */}
           <div className="relative mx-auto mask-linear-fade">
             <div className="flex overflow-hidden">
-              <LogoScroll logos={logos} />
-              <LogoScroll logos={logos} />
+              <div className="flex animate-scroll gap-10 sm:gap-14">
+                {logos.map((logo) => (
+                  <div 
+                    key={logo.name}
+                    className="flex min-w-[160px] items-center justify-center"
+                  >
+                    <div className="relative h-14 w-full">
+                      <Image
+                        src={logo.logo}
+                        alt={logo.name}
+                        fill
+                        className="object-contain filter transition-all duration-300 hover:brightness-110 dark:brightness-90 dark:hover:brightness-110"
+                      />
+                    </div>
+                  </div>
+                ))}
+                {logos.map((logo) => (
+                  <div 
+                    key={`${logo.name}-duplicate`}
+                    className="flex min-w-[160px] items-center justify-center"
+                  >
+                    <div className="relative h-14 w-full">
+                      <Image
+                        src={logo.logo}
+                        alt={logo.name}
+                        fill
+                        className="object-contain filter transition-all duration-300 hover:brightness-110 dark:brightness-90 dark:hover:brightness-110"
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 

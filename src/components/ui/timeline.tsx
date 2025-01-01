@@ -39,14 +39,14 @@ const Timeline: React.FC<TimelineProps> = ({
         {data.map((item, idx) => {
           const isEven = idx % 2 === 0;
           return (
-            <div key={item.title} className="mb-8 md:mb-16 last:mb-0">
+            <div key={item.title} className="mb-12 md:mb-24 last:mb-0">
               <div
-                className={`flex flex-col md:flex-row gap-4 md:gap-8 ${
+                className={`flex flex-col md:flex-row gap-8 md:gap-24 relative ${
                   isEven ? "md:flex-row-reverse" : ""
                 }`}
               >
                 {/* Title section */}
-                <div className="flex-1 md:text-right pl-12 md:pl-0">
+                <div className="flex-1 md:text-right pl-16 md:pl-0 md:pr-12">
                   <motion.div
                     initial={{ opacity: 0, x: isEven ? 100 : -100 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -54,30 +54,30 @@ const Timeline: React.FC<TimelineProps> = ({
                     transition={{ duration: 1, type: "spring" }}
                     className="sticky top-4"
                   >
-                    <h3 className="text-xl md:text-2xl font-extrabold text-gray-900 mb-2">
+                    <h3 className="text-xl md:text-2xl font-extrabold text-gray-900 mb-4">
                       {item.title}
                     </h3>
                   </motion.div>
                 </div>
 
                 {/* Dot */}
-                <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2">
+                <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 mt-2 md:mt-0">
                   <div
-                    className={`w-10 h-10 rounded-full ${dotClassName} flex items-center justify-center ring-2 ring-offset-2`}
+                    className={`w-12 h-12 rounded-full ${dotClassName} flex items-center justify-center ring-4 ring-offset-4 shadow-lg`}
                   >
-                    {item.icon || <CheckCircleIcon className="w-6 h-6 text-white" />}
+                    {item.icon || <CheckCircleIcon className="w-7 h-7 text-white" />}
                   </div>
                 </div>
 
                 {/* Content section */}
-                <div className="flex-1 pl-12 md:pl-0">
+                <div className="flex-1 pl-16 md:pl-12">
                   <motion.div
                     initial={{ opacity: 0, x: isEven ? -100 : 100 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 1, type: "spring" }}
                   >
-                    <div className="prose prose-green max-w-none">
+                    <div className="prose prose-green max-w-none prose-lg">
                       {item.content}
                     </div>
                   </motion.div>

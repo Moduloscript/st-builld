@@ -9,6 +9,7 @@
   --input: 214.3 31.8% 91.4%;
   --primary: 222.2 47.4% 11.2%;
   --primary-foreground: 210 40% 98%;
+  --duration: 30s;
 }
 
 .dark {
@@ -29,17 +30,18 @@ body {
   .text-balance {
     text-wrap: balance;
   }
-  
-  .animate-marquee {
-    animation: marquee var(--marquee-duration) linear infinite;
-  }
-  
-  .animate-fade-in {
-    animation: fade-in 0.5s linear forwards;
-  }
-  
-  .gradient-mask-t-50 {
-    mask-image: linear-gradient(to top, rgba(0, 0, 0, 1) 50%, transparent 100%);
+
+  /* Only apply animations on larger screens */
+  @media (min-width: 1024px) {
+    .animate-scroll-up {
+      animation: scroll-up var(--duration) linear infinite;
+      will-change: transform;
+    }
+
+    .animate-scroll-down {
+      animation: scroll-down var(--duration) linear infinite;
+      will-change: transform;
+    }
   }
 }
 
@@ -91,30 +93,39 @@ body {
   }
 }
 
-@keyframes scroll {
+@keyframes scroll-up {
   0% {
-    transform: translateX(0);
+    transform: translateY(0);
   }
   100% {
-    transform: translateX(-100%);
+    transform: translateY(-50%);
   }
 }
 
-.animate-scroll {
-  animation: scroll 30s linear infinite;
-}
-
-.mask-linear-fade {
-  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-}
-
-@layer base {
-  * {
-    @apply border-border;
+@keyframes scroll-down {
+  0% {
+    transform: translateY(-50%);
   }
-  body {
-    @apply bg-background text-foreground;
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Disable animations for touch devices and smaller screens */
+@media (hover: none), (max-width: 1023px) {
+  .animate-scroll-up,
+  .animate-scroll-down {
+    animation: none;
+    transform: translateY(0);
+  }
+}
+
+/* Optimize animations for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-scroll-up,
+  .animate-scroll-down {
+    animation: none;
+    transform: translateY(0);
   }
 }
 
@@ -148,4 +159,187 @@ html.lenis {
 
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
+}
+
+/* Text Content Positioning */
+.text-content {
+  position: relative;
+  max-width: 44em;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.header-text {
+  position: relative;
+  z-index: 10;
+  transform: translateY(-1em);
+}
+
+.description-text {
+  position: absolute;
+  color: #86868b;
+  font-weight: 600;
+  background: linear-gradient(0deg, #86868b 0%, #bdc2c9 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin: 2em auto 0;
+  max-width: 28em;
+  text-align: center;
+  font-size: 1.125em;
+  line-height: 1.5;
+}
+
+.description-text .highlight {
+  position: relative;
+  display: inline-block;
+  -webkit-text-fill-color: #e7dfd6;
+  font-weight: 700;
+}
+
+/* Glow Effects */
+.glow-text {
+  position: relative;
+  display: inline-block;
+  color: #c8c2bd;
+  scale: 1;
+  animation: textScale 1s ease-out forwards;
+}
+
+.glow-text::before {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  color: #fffaf6;
+  background: linear-gradient(0deg, #dfe5ee 0%, #fffaf6 50%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: url(#glow-effect);
+  opacity: 0;
+  animation: textFade 1s ease-out forwards;
+}
+
+/* Background Effects */
+.bg-effect {
+  width: 100%;
+  height: 100vh;
+  max-width: 44em;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.glow-orb-top,
+.glow-orb-bottom {
+  position: absolute;
+  scale: 1.2;
+  width: 100%;
+  height: 100%;
+  border-radius: 100em;
+  opacity: 0.6;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.glow-orb-top {
+  box-shadow: 
+    inset 0 0 4em 3em rgba(238, 200, 175, 0.2),
+    inset 0 0 2em 0.4em rgba(238, 200, 175, 0.2),
+    0 0 0.1em 0.1em rgba(238, 200, 175, 0.2),
+    0 0 1em 0.4em rgba(238, 200, 175, 0.3);
+  top: -70%;
+  animation: glowOrbTop 1s ease-in-out forwards;
+}
+
+.glow-orb-bottom {
+  box-shadow: 
+    inset 0 0 4em 3em rgba(238, 200, 175, 0.2),
+    inset 0 0 2em 0.4em rgba(238, 200, 175, 0.2),
+    0 0 0.1em 0.1em rgba(238, 200, 175, 0.2),
+    0 0 1em 0.4em rgba(238, 200, 175, 0.3);
+  bottom: -70%;
+  animation: glowOrbBottom 1s ease-in-out forwards;
+}
+
+/* Animations */
+@keyframes glowOrbTop {
+  0% { 
+    top: -70%;
+    opacity: 0.3;
+  }
+  100% { 
+    top: -64%;
+    opacity: 0.8;
+  }
+}
+
+@keyframes glowOrbBottom {
+  0% { 
+    bottom: -70%;
+    opacity: 0.3;
+  }
+  100% { 
+    bottom: -64%;
+    opacity: 0.8;
+  }
+}
+
+@keyframes textScale {
+  24% { 
+    scale: 1;
+  }
+  100% { 
+    scale: 1.02;
+  }
+}
+
+@keyframes textFade {
+  24% { 
+    opacity: 0;
+  }
+  100% { 
+    opacity: 1;
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 640px) {
+  .text-content {
+    padding: 0 1rem;
+  }
+  
+  .glow-text {
+    font-size: 2.5em;
+  }
+  
+  .description-text {
+    font-size: 1em;
+    max-width: 24em;
+  }
+}
+
+/* Precise Glow Effects */
+.filters {
+  height: 0;
+  width: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+/* Optimize for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .glow-orb-top,
+  .glow-orb-bottom,
+  .glow-text,
+  .glow-text::before {
+    animation: none;
+    opacity: 0.8;
+    scale: 1;
+  }
 }

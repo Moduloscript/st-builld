@@ -3,23 +3,48 @@ import { Input, Button } from '@nextui-org/react'
 import { MapPinIcon } from '@heroicons/react/24/outline'
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
+import { WorldMap } from '@/components/ui/world-map'
 
 const locations = [
   {
     id: 1,
     name: "St Peter's Pharmacy - Main Branch",
-    address: "123 Health Street, Medical District",
+    address: "123 Health Street, Medical District, Benin City",
     hours: "Mon-Sat: 8AM-9PM, Sun: 9AM-6PM",
     phone: "+234 123 456 7890",
+    coordinates: { lat: 6.3350, lng: 5.6037 }, // Benin City coordinates
   },
   {
     id: 2,
     name: "St Peter's Pharmacy - West End",
-    address: "456 Wellness Avenue, West End",
+    address: "456 Wellness Avenue, GRA, Benin City",
     hours: "Mon-Sat: 8AM-8PM, Sun: 9AM-5PM",
     phone: "+234 123 456 7891",
+    coordinates: { lat: 6.3389, lng: 5.6268 }, // Another Benin City location
   },
-  // Add more locations as needed
+  {
+    id: 3,
+    name: "St Peter's Pharmacy - Ring Road",
+    address: "789 Medical Plaza, Ring Road, Benin City",
+    hours: "Mon-Sat: 8AM-10PM, Sun: 9AM-7PM",
+    phone: "+234 123 456 7892",
+    coordinates: { lat: 6.3406, lng: 5.6145 }, // Ring Road area
+  },
+]
+
+const mapDots = [
+  {
+    start: { lat: 6.3350, lng: 5.6037 },
+    end: { lat: 6.3389, lng: 5.6268 },
+  },
+  {
+    start: { lat: 6.3389, lng: 5.6268 },
+    end: { lat: 6.3406, lng: 5.6145 },
+  },
+  {
+    start: { lat: 6.3406, lng: 5.6145 },
+    end: { lat: 6.3350, lng: 5.6037 },
+  },
 ]
 
 const fadeIn = {
@@ -39,7 +64,7 @@ export default function LocationFinder() {
   )
 
   return (
-    <section className="relative bg-gradient-to-b from-white via-emerald-50/30 to-white py-24 sm:py-32" ref={ref}>
+    <section className="relative bg-gradient-to-b from-emerald-950 via-emerald-900 to-emerald-950 py-24 sm:py-32" ref={ref}>
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px)] bg-[size:40px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
@@ -55,11 +80,11 @@ export default function LocationFinder() {
           transition={{ duration: 0.5 }}
           className="mx-auto max-w-2xl text-center"
         >
-          <h2 className="bg-gradient-to-r from-gray-900 via-emerald-900 to-gray-900 bg-clip-text text-3xl font-bold tracking-tight text-transparent sm:text-4xl">
+          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
             Find a Location Near You
           </h2>
-          <p className="mt-4 text-lg leading-8 text-gray-600">
-            Visit us at any of our convenient locations
+          <p className="mt-4 text-lg leading-8 text-emerald-300">
+            Visit us at any of our convenient locations in Benin City
           </p>
         </motion.div>
 
@@ -77,10 +102,19 @@ export default function LocationFinder() {
             startContent={<MapPinIcon className="w-5 h-5 text-emerald-500" />}
             className="w-full"
             classNames={{
-              input: "bg-white/80 backdrop-blur-sm",
-              inputWrapper: "shadow-lg shadow-emerald-500/5 ring-1 ring-gray-900/5 hover:ring-emerald-500/20 transition-all duration-300"
+              input: "bg-emerald-800/50 text-white placeholder:text-emerald-300",
+              inputWrapper: "shadow-lg shadow-emerald-900/50 ring-1 ring-emerald-700 hover:ring-emerald-600 transition-all duration-300"
             }}
           />
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="mt-16 rounded-xl bg-emerald-800/30 p-4 backdrop-blur-sm ring-1 ring-emerald-700"
+        >
+          <WorldMap dots={mapDots} lineColor="#10B981" />
         </motion.div>
 
         <motion.div
@@ -103,11 +137,11 @@ export default function LocationFinder() {
               variants={fadeIn}
               className="group"
             >
-              <div className="rounded-lg bg-white/80 backdrop-blur-sm p-8 shadow-lg shadow-emerald-500/5 ring-1 ring-gray-900/5 transition-all duration-300 hover:shadow-emerald-500/10 hover:ring-emerald-500/20">
-                <h3 className="text-lg font-semibold bg-gradient-to-r from-gray-900 to-emerald-900 bg-clip-text text-transparent">
+              <div className="rounded-lg bg-emerald-800/30 backdrop-blur-sm p-8 shadow-lg shadow-emerald-900/50 ring-1 ring-emerald-700 transition-all duration-300 hover:shadow-emerald-800/50 hover:ring-emerald-600">
+                <h3 className="text-lg font-semibold text-white">
                   {location.name}
                 </h3>
-                <address className="mt-4 text-sm not-italic text-gray-600 space-y-2">
+                <address className="mt-4 text-sm not-italic text-emerald-300 space-y-2">
                   <p className="flex items-center gap-2">
                     <MapPinIcon className="w-4 h-4 text-emerald-500" />
                     {location.address}
@@ -130,7 +164,7 @@ export default function LocationFinder() {
                     color="primary"
                     variant="flat"
                     startContent={<MapPinIcon className="w-4 h-4" />}
-                    className="bg-gradient-to-r from-emerald-500 to-emerald-600 text-white shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30 transition-all duration-300 group"
+                    className="bg-emerald-600 text-white shadow-lg shadow-emerald-900/20 hover:bg-emerald-500 hover:shadow-emerald-900/30 transition-all duration-300 group"
                   >
                     <span className="transition-transform duration-300 group-hover:translate-x-1">Get Directions</span>
                   </Button>
