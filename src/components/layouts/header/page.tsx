@@ -1,26 +1,33 @@
 'use client'
 
-import { Fragment } from 'react'
+import { Fragment, useState } from 'react'
+import { Dialog, Disclosure, Menu, Transition } from '@headlessui/react'
+import {
+  Bars3Icon,
+  BellIcon,
+  XMarkIcon,
+} from '@heroicons/react/24/outline'
+import { ChevronDownIcon } from '@heroicons/react/20/solid'
+import { useAuth } from '@/lib/auth/hooks/useAuth'
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, XMarkIcon, UserIcon, PhoneIcon } from '@heroicons/react/24/outline'
 import { theme } from '@/lib/constants/theme'
+import PhoneIcon from '@heroicons/react/24/solid/PhoneIcon'
 
 const navigation = [
   { name: 'Home', href: '/' },
-  { name: 'Catalog', href: '/catalog' },
-  { name: 'Education', href: '/education' },
-  { name: 'Blog', href: '/blog' },
-  { name: 'Locations', href: '/locations' },
-  { 
-    name: 'About', 
-    href: '/about',
+  { name: 'About', href: '/about' },
+  {
+    name: 'Services',
     submenu: [
-      { name: 'Company', href: '/about' },
-    ]
+      { name: 'Prescriptions', href: '/services/prescriptions' },
+      { name: 'Consultations', href: '/services/consultations' },
+      { name: 'Health Checks', href: '/services/health-checks' },
+    ],
   },
+  { name: 'Products', href: '/products' },
   { name: 'Contact', href: '/contact' },
 ]
 
@@ -28,8 +35,23 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
-const Header = () => {
+export default function Header() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const { user, signOut } = useAuth()
+  const router = useRouter()
+  const [isLoading, setIsLoading] = useState(false)
   const pathname = usePathname()
+
+  const handleSignOut = async () => {
+    setIsLoading(true)
+    try {
+      await signOut()
+      window.location.href = '/auth/login'
+    } catch (error) {
+      console.error('Error signing out:', error)
+      setIsLoading(false)
+    }
+  }
 
   return (
     <Disclosure as="header" className="bg-emerald-50 shadow-sm">
@@ -44,9 +66,6 @@ const Header = () => {
                   <span className="text-sm">Emergency: +234 800 123 4567</span>
                 </div>
                 <div className="hidden md:flex md:items-center md:space-x-6">
-                  <Link href="/prescription" className="text-sm hover:text-emerald-100">
-                    Upload Prescription
-                  </Link>
                   <Link href="/emergency" className="text-sm hover:text-emerald-100">
                     24/7 Services
                   </Link>
@@ -140,12 +159,28 @@ const Header = () => {
               <div className="flex items-center space-x-6">
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative ml-3">
-                  <Menu.Button className="rounded-full bg-white p-2 text-emerald-600 hover:text-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-500">
-                    <UserIcon className="h-6 w-6" aria-hidden="true" />
-                  </Menu.Button>
+                  <div>
+                    <Menu.Button className="relative flex rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2">
+                      <span className="absolute -inset-1.5" />
+                      <span className="sr-only">Open user menu</span>
+                      {user?.avatar_url ? (
+                        <img
+                          className="h-8 w-8 rounded-full"
+                          src={user.avatar_url}
+                          alt=""
+                        />
+                      ) : (
+                        <div className="h-8 w-8 rounded-full bg-emerald-100 flex items-center justify-center">
+                          <span className="text-emerald-700 text-sm font-medium">
+                            {(user?.full_name || user?.email || '?').charAt(0).toUpperCase()}
+                          </span>
+                        </div>
+                      )}
+                    </Menu.Button>
+                  </div>
                   <Transition
                     as={Fragment}
-                    enter="transition ease-out duration-100"
+                    enter="transition ease-out duration-200"
                     enterFrom="transform opacity-0 scale-95"
                     enterTo="transform opacity-100 scale-100"
                     leave="transition ease-in duration-75"
@@ -159,7 +194,7 @@ const Header = () => {
                             href="/profile"
                             className={classNames(
                               active ? 'bg-emerald-50' : '',
-                              'block px-4 py-2 text-sm text-emerald-700'
+                              'block px-4 py-2 text-sm text-gray-700'
                             )}
                           >
                             Your Profile
@@ -168,26 +203,16 @@ const Header = () => {
                       </Menu.Item>
                       <Menu.Item>
                         {({ active }) => (
-                          <Link
-                            href="/prescriptions"
-                            className={classNames(
-                              active ? 'bg-emerald-50' : '',
-                              'block px-4 py-2 text-sm text-emerald-700'
-                            )}
-                          >
-                            Prescriptions
-                          </Link>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
                           <button
+                            onClick={handleSignOut}
+                            disabled={isLoading}
                             className={classNames(
                               active ? 'bg-emerald-50' : '',
-                              'block w-full px-4 py-2 text-left text-sm text-emerald-700'
+                              'block w-full px-4 py-2 text-left text-sm',
+                              isLoading ? 'text-gray-400' : 'text-emerald-700'
                             )}
                           >
-                            Sign out
+                            {isLoading ? 'Signing out...' : 'Sign out'}
                           </button>
                         )}
                       </Menu.Item>
@@ -216,38 +241,33 @@ const Header = () => {
               {navigation.map((item) => (
                 <div key={item.name}>
                   {item.submenu ? (
-                    <Disclosure.Button
-                      as="div"
-                      className={classNames(
-                        pathname === item.href
-                          ? 'bg-emerald-50 text-emerald-700'
-                          : 'text-emerald-600 hover:bg-emerald-50 hover:text-emerald-800',
-                        'block px-3 py-2 text-base font-medium'
-                      )}
-                    >
-                      {item.name}
-                      <Disclosure.Panel>
-                        {item.submenu.map((submenuItem) => (
+                    <Disclosure>
+                      {({ open }) => (
+                        <>
                           <Disclosure.Button
-                            key={submenuItem.name}
-                            as={Link}
-                            href={submenuItem.href}
                             className={classNames(
-                              pathname === submenuItem.href
-                                ? 'bg-emerald-50 text-emerald-700'
-                                : 'text-emerald-600 hover:bg-emerald-50 hover:text-emerald-800',
-                              'block px-3 py-2 text-base font-medium'
+                              'block w-full text-left px-3 py-2 text-base font-medium',
+                              open ? 'bg-emerald-50 text-emerald-700' : 'text-emerald-600 hover:bg-emerald-50 hover:text-emerald-800'
                             )}
                           >
-                            {submenuItem.name}
+                            {item.name}
                           </Disclosure.Button>
-                        ))}
-                      </Disclosure.Panel>
-                    </Disclosure.Button>
+                          <Disclosure.Panel>
+                            {item.submenu.map((submenuItem) => (
+                              <Link
+                                key={submenuItem.name}
+                                href={submenuItem.href}
+                                className="block pl-6 pr-3 py-2 text-base font-medium text-emerald-600 hover:bg-emerald-50 hover:text-emerald-800"
+                              >
+                                {submenuItem.name}
+                              </Link>
+                            ))}
+                          </Disclosure.Panel>
+                        </>
+                      )}
+                    </Disclosure>
                   ) : (
-                    <Disclosure.Button
-                      key={item.name}
-                      as={Link}
+                    <Link
                       href={item.href}
                       className={classNames(
                         pathname === item.href
@@ -257,7 +277,7 @@ const Header = () => {
                       )}
                     >
                       {item.name}
-                    </Disclosure.Button>
+                    </Link>
                   )}
                 </div>
               ))}
@@ -268,5 +288,3 @@ const Header = () => {
     </Disclosure>
   )
 }
-
-export default Header

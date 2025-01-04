@@ -5,12 +5,15 @@ import { useState } from 'react'
 
 interface CatalogFiltersProps {
   categories: string[]
+  selectedCategory?: string
   onFilterChange: (filters: any) => void
 }
 
-export function CatalogFilters({ categories, onFilterChange }: CatalogFiltersProps) {
+export function CatalogFilters({ categories, selectedCategory, onFilterChange }: CatalogFiltersProps) {
   const [priceRange, setPriceRange] = useState([0, 1000])
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([])
+  const [selectedCategories, setSelectedCategories] = useState<string[]>(
+    selectedCategory ? [selectedCategory] : []
+  )
 
   const handleCategoryChange = (category: string) => {
     const updated = selectedCategories.includes(category)

@@ -54,7 +54,36 @@ export async function middleware(request: NextRequest) {
     }
   )
 
-  await supabase.auth.getSession()
+  const { data: { session } } = await supabase.auth.getSession()
+
+  // Get the pathname of the request
+  const pathname = request.nextUrl.pathname
+
+  // Define protected routes that require authentication
+  const protectedRoutes = ['/profile', '/dashboard']
+  const isProtectedRoute = protectedRoutes.some(route => pathname.startsWith(route))
+
+  // Define auth routes
+  const authRoutes = ['/auth/login', '/auth/register']
+  const isAuthRoute = authRoutes.some(route => pathname === route)
+
+  // Handle protected routes
+  if (isProtectedRoute) {
+    if (!session) {
+      const redirectUrl = new URL('/auth/login', request.url)
+      redirectUrl.searchParams.set('redirect', pathname)
+      return NextResponse.redirect(redirectUrl)
+    }
+    return response
+  }
+
+  // Handle auth routes
+  if (isAuthRoute) {
+    if (session) {
+      return NextResponse.redirect(new URL('/profile', request.url))
+    }
+    return response
+  }
 
   return response
 }
@@ -67,7 +96,10 @@ export const config = {
      * - _next/image (image optimization files)
      * - favicon.ico (favicon file)
      * - public folder
+     * - api routes
      */
     '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
+    '/profile/:path*',
+    '/auth/:path*',
   ],
 }

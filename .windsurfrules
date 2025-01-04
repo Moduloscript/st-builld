@@ -7,7 +7,7 @@ project:
   type: "next.js"
   database: "supabase"
   environment: "development"
-  description: "A modern pharmaceutical marketing, educational, and prescription management platform"
+  description: "A modern pharmaceutical marketing and educational platform"
 
 # Directory Structure
 structure:
@@ -28,23 +28,14 @@ structure:
       - blog/          # Health articles and updates
       - locations/     # Pharmacy locations
       - about/         # Company information
-      - prescriptions/ # Prescription services
-        - refill/     # Refill request system
-        - services/   # Available prescription services
-        - booking/    # Consultation booking
     
     components:
       - ui:
           - forms/
-            - PrescriptionRefill.tsx
-            - ConsultationBooking.tsx
           - buttons/
           - cards/
             - ServiceCard.tsx
-            - PrescriptionStatus.tsx
           - modals/
-            - RefillConfirmation.tsx
-            - BookingSuccess.tsx
           - catalog/     # Product display components
           - navigation/
       - features:
@@ -53,10 +44,6 @@ structure:
           - catalog/      # Product showcase
           - newsletter/   # Email subscription
           - search/       # Product and content search
-          - prescriptions/
-            - RefillTracker.tsx
-            - ServicesList.tsx
-            - BookingCalendar.tsx
       - layouts:
           - header/
           - hero/
@@ -83,11 +70,6 @@ structure:
           - analytics:
               - track-event.ts
               - page-view.ts
-          - prescriptions:
-              - submit-refill.ts
-              - track-status.ts
-              - book-consultation.ts
-              - fetch-time-slots.ts
       
       - supabase:
           - client.ts
@@ -98,7 +80,6 @@ structure:
           - validation.ts
           - seo.ts
           - analytics.ts
-          - prescription-helpers.ts
       
       - hooks:
           - use-auth.ts
@@ -106,14 +87,11 @@ structure:
           - use-catalog.ts
           - use-analytics.ts
           - use-search.ts
-          - use-prescriptions.ts
-          - use-booking.ts
     
     types:
       - database.ts
       - supabase.ts
       - analytics.ts
-      - prescriptions.ts
 
 # Content Structure
 content:
@@ -124,7 +102,6 @@ content:
     - company_updates
     - testimonials
     - faqs
-    - prescription_guides
     - medication_information
     - service_descriptions
 
@@ -134,7 +111,6 @@ supabase:
     auth:
       - admin_profiles
       - staff_profiles
-      - patient_profiles
     
     public:
       tables:
@@ -173,68 +149,6 @@ supabase:
         - locations:
             rls: read_all
             realtime: false
-
-        - prescription_refills:
-            rls: auth_only
-            realtime: true
-            features:
-              - status_tracking
-              - notifications
-              - history
-            columns:
-              - id
-              - patient_id
-              - prescription_number
-              - status
-              - preferred_pickup_time
-              - notes
-              - created_at
-              - updated_at
-
-        - prescription_services:
-            rls: read_all
-            realtime: false
-            features:
-              - categories
-              - pricing
-              - availability
-            columns:
-              - id
-              - name
-              - description
-              - duration
-              - price
-              - requires_consultation
-
-        - consultations:
-            rls: auth_only
-            realtime: true
-            features:
-              - scheduling
-              - reminders
-              - status_updates
-            columns:
-              - id
-              - patient_id
-              - service_id
-              - scheduled_time
-              - status
-              - notes
-              - created_at
-
-        - time_slots:
-            rls: read_all
-            realtime: true
-            features:
-              - availability
-              - booking
-            columns:
-              - id
-              - day_of_week
-              - start_time
-              - end_time
-              - is_available
-              - service_id
   
   storage:
     buckets:
@@ -242,7 +156,6 @@ supabase:
       - blog-images
       - marketing-assets
       - educational-content
-      - prescription-documents
 
 # Tech Stack
 tech_stack:
@@ -303,7 +216,6 @@ integrations:
         features:
           - "web-push"
           - "topic-messaging"
-          - "prescription-alerts"
     
     sms:
       primary:
@@ -314,7 +226,6 @@ integrations:
           endpoints:
             - "send-sms"
             - "delivery-reports"
-            - "prescription-notifications"
         cost: "pay-per-use"
     
     email:
@@ -324,7 +235,6 @@ integrations:
           - "transactional"
           - "marketing-campaigns"
           - "automation"
-          - "prescription-notifications"
         limits:
           free_tier:
             emails_per_day: 300
@@ -339,7 +249,6 @@ integrations:
         - "real-time-analytics"
         - "campaign-tracking"
         - "custom-events"
-        - "prescription-tracking"
         - "gdpr-compliant"
       database:
         type: "postgresql"
@@ -349,49 +258,4 @@ integrations:
       features:
         - "meta-tags"
         - "sitemap-generation"
-        - "prescription-service-seo"
         - "local-pharmacy-seo"
-
-# Prescription Features
-prescription_system:
-  features:
-    refill_requests:
-      - online_submission
-      - status_tracking
-      - notifications
-      - history_viewing
-    
-    consultation_booking:
-      - calendar_integration
-      - automatic_reminders
-      - cancellation_management
-      - rescheduling
-    
-    services:
-      - medication_review
-      - prescription_counseling
-      - insurance_consultation
-      - generic_alternatives
-    
-    educational_content:
-      - medication_guides
-      - safety_information
-      - insurance_guides
-      - video_tutorials
-
-  security:
-    - hipaa_compliance
-    - data_encryption
-    - access_control
-    - audit_logging
-
-  notifications:
-    channels:
-      - email
-      - sms
-      - push
-    events:
-      - refill_ready
-      - appointment_reminder
-      - status_update
-      - prescription_expiring

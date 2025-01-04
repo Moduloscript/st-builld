@@ -66,7 +66,7 @@ const FlipText = ({ children }) => {
 
 const serviceImages = {
   prescription: '/services/prescription.jpg',
-  consultation: '/services/conslutation.jpg',
+  consultation: '/services/consultation.jpg',
   nursing: '/services/nurse.jpg',
   records: '/services/records.jpg',
 }
@@ -210,23 +210,23 @@ const services = [
     description: 'Expert prescription processing with thorough medication reviews, ensuring safety and accuracy. We offer convenient refill services and medication synchronization for your convenience.'
   },
   {
+    title: 'Health Consultations',
+    icon: <Stethoscope className="h-4 w-4" />,
+    image: serviceImages.consultation,
+    description: 'Professional health consultations with our experienced pharmacists for personalized care and advice.'
+  },
+  {
     title: 'Medication Management',
     icon: <Syringe className="h-4 w-4" />,
     image: serviceImages.nursing,
     description: 'Comprehensive medication therapy management, including detailed counseling on proper usage, potential interactions, and side effects monitoring for optimal health outcomes.'
   },
   {
-    title: 'Health Consultations',
-    icon: <Stethoscope className="h-4 w-4" />,
-    image: serviceImages.consultation,
-    description: 'One-on-one consultations with our experienced pharmacists for personalized health advice, vaccine administration, and wellness recommendations tailored to your needs.'
-  },
-  {
     title: 'Healthcare Records',
     icon: <ClipboardList className="h-4 w-4" />,
     image: serviceImages.records,
-    description: 'Secure digital health record management system that helps track your medications, immunizations, and health progress while ensuring seamless coordination with your healthcare providers.'
-  }
+    description: 'Secure and organized healthcare record management to ensure continuity of care and easy access to your medical history.'
+  },
 ]
 
 export default function ServicesSection() {

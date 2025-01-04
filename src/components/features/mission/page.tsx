@@ -63,16 +63,16 @@ function MissionHeader() {
       <section className="mt-16 grid grid-cols-1 lg:grid-cols-2 lg:gap-12">
         <div className="max-w-lg">
           <h2 className="text-2xl font-medium tracking-tight text-emerald-800">Our Mission</h2>
-          <p className="mt-6 text-sm/6 text-gray-600">
-            At St. Peter&apos;s Pharmacy, we are dedicated to revolutionizing the pharmacy experience
-            through personalized care, education, and innovative health solutions. Our mission
-            is to be more than just a pharmacy – we strive to be a trusted healthcare partner
-            in our community&apos;s wellness journey.
+          <p className="mt-6 text-lg leading-8 text-gray-600">
+            At St Peter's Pharmacy, we're committed to providing comprehensive healthcare
+            services and health education. Through our range of professional
+            services, we ensure that every
+            customer receives personalized attention and expert care.
           </p>
           <p className="mt-8 text-sm/6 text-gray-600">
             We believe in patient-centered care — taking the time to understand each individual&apos;s
             unique health needs and providing tailored solutions. Through our comprehensive
-            services, from prescription management to health education, we ensure that every
+            services, from health education to preventive care, we ensure that every
             patient receives the attention and care they deserve.
           </p>
         </div>
@@ -80,14 +80,14 @@ function MissionHeader() {
           <div className="-mx-8 grid grid-cols-2 gap-4 sm:-mx-16 sm:grid-cols-4 lg:mx-0 lg:grid-cols-2 lg:gap-4 xl:gap-8">
             <div className="aspect-square overflow-hidden rounded-xl shadow-xl outline-1 -outline-offset-1 outline-emerald-100/50">
               <img
-                alt="Pharmacist consulting with patient"
+                alt="Healthcare professionals consulting with patient"
                 src="/mission/mission-1.jpg"
                 className="block size-full object-cover"
               />
             </div>
             <div className="-mt-8 aspect-square overflow-hidden rounded-xl shadow-xl outline-1 -outline-offset-1 outline-emerald-100/50 lg:-mt-32">
               <img
-                alt="Modern pharmacy interior"
+                alt="Modern healthcare interior"
                 src="/mission/mission-2.jpg"
                 className="block size-full object-cover"
               />
@@ -101,7 +101,7 @@ function MissionHeader() {
             </div>
             <div className="-mt-8 aspect-square overflow-hidden rounded-xl shadow-xl outline-1 -outline-offset-1 outline-emerald-100/50 lg:-mt-32">
               <img
-                alt="Digital prescription services"
+                alt="Digital healthcare services"
                 src="/mission/mission-4.jpg"
                 className="block size-full object-cover"
               />
@@ -178,7 +178,7 @@ function Values() {
     },
     {
       title: "Innovation in Healthcare",
-      description: "We embrace modern technology and innovative solutions to enhance the pharmacy experience and improve health outcomes.",
+      description: "We embrace modern technology and innovative solutions to enhance the healthcare experience and improve health outcomes.",
       icon: LightBulbIcon,
       gradient: "from-amber-400 to-orange-600",
       shadowColor: "shadow-amber-200"
