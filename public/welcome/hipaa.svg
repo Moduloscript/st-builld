@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Shield Background -->
+  <path d="M24 4L6 12V22C6 32.0604 13.3427 41.2772 24 44C34.6573 41.2772 42 32.0604 42 22V12L24 4Z" fill="#E2E8F0"/>
+  <!-- HIPAA Text -->
+  <text x="24" y="28" font-family="Arial, sans-serif" font-size="10" font-weight="bold" text-anchor="middle" fill="#1E293B">HIPAA</text>
+  <!-- Shield Border -->
+  <path d="M24 4L6 12V22C6 32.0604 13.3427 41.2772 24 44C34.6573 41.2772 42 32.0604 42 22V12L24 4Z" stroke="#64748B" stroke-width="2" stroke-linejoin="round"/>
+  <!-- Checkmark -->
+  <path d="M16 24L22 30L32 20" stroke="#4F46E5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

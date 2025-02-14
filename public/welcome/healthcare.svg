@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Hospital Building -->
+  <rect x="200" y="100" width="400" height="400" fill="#f0fdf4" stroke="#047857" stroke-width="4"/>
+  
+  <!-- Windows -->
+  <rect x="250" y="150" width="60" height="80" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
+  <rect x="370" y="150" width="60" height="80" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
+  <rect x="490" y="150" width="60" height="80" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
+  
+  <!-- Door -->
+  <rect x="350" y="400" width="100" height="100" fill="#047857"/>
+  <rect x="380" y="420" width="40" height="80" fill="#ecfdf5"/>
+  
+  <!-- Cross Symbol -->
+  <g transform="translate(400 250)">
+    <rect x="-60" y="-15" width="120" height="30" fill="#047857"/>
+    <rect x="-15" y="-60" width="30" height="120" fill="#047857"/>
+  </g>
+  
+  <!-- Decorative Elements -->
+  <circle cx="150" cy="150" r="30" fill="none" stroke="#047857" stroke-width="2"/>
+  <circle cx="650" cy="450" r="40" fill="none" stroke="#047857" stroke-width="2"/>
+  
+  <!-- Pills -->
+  <g transform="translate(100 400)">
+    <rect x="0" y="0" width="60" height="30" rx="15" fill="#047857"/>
+    <circle cx="15" cy="15" r="12" fill="#ecfdf5"/>
+    <circle cx="45" cy="15" r="12" fill="#ecfdf5"/>
+  </g>
+  
+  <!-- Stethoscope -->
+  <path d="M600 100 Q650 150 650 200 T600 300" fill="none" stroke="#047857" stroke-width="4"/>
+  <circle cx="600" cy="300" r="20" fill="#047857"/>
+</svg>

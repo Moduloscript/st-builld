@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="50" viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .text { font-family: 'Arial', sans-serif; font-weight: bold; }
+    .icon { fill: #0F766E; filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.1)); }
+    .main-text { filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.05)); }
+    .sub-text { filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.05)); }
+  </style>
+  <g transform="translate(10,35)">
+    <path class="icon" d="M15 0h5v-20h15v-5h-15v-15h-5v15h-15v5h15z"/>
+    <text class="text main-text" x="45" y="0" font-size="24" fill="#0F766E">St Peter's</text>
+    <text class="text sub-text" x="45" y="-25" font-size="16" fill="#134E4A">Pharmacy</text>
+  </g>
+</svg>

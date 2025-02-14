@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Cross pattern -->
+  <path d="M20 0V40M0 20H40" stroke="currentColor" stroke-width="0.5" stroke-opacity="0.1"/>
+  
+  <!-- Small dots at intersections -->
+  <circle cx="20" cy="20" r="1" fill="currentColor" fill-opacity="0.15"/>
+  
+  <!-- Corner dots -->
+  <circle cx="0" cy="0" r="1" fill="currentColor" fill-opacity="0.15"/>
+  <circle cx="40" cy="0" r="1" fill="currentColor" fill-opacity="0.15"/>
+  <circle cx="0" cy="40" r="1" fill="currentColor" fill-opacity="0.15"/>
+  <circle cx="40" cy="40" r="1" fill="currentColor" fill-opacity="0.15"/>
+  
+  <!-- Medical cross in center -->
+  <path d="M24 20H16M20 16V24" stroke="currentColor" stroke-width="1" stroke-opacity="0.2" stroke-linecap="round"/>
+</svg>

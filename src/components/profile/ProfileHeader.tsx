@@ -2,7 +2,7 @@
 
 import { Button } from '@nextui-org/react'
 import { useRouter } from 'next/navigation'
-import { useAuth } from '@/lib/auth/hooks/useAuth'
+import { useAuth } from '@/lib/hooks/useAuth'
 import { LogOut } from 'lucide-react'
 import { useState } from 'react'
 
@@ -16,7 +16,7 @@ export default function ProfileHeader() {
     try {
       await signOut()
       // Force a hard redirect to the login page
-      window.location.href = '/auth/login'
+      router.push('/login')
     } catch (error) {
       console.error('Error signing out:', error)
       setIsLoading(false)

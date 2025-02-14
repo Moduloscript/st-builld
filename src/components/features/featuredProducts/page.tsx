@@ -4,12 +4,17 @@ import { ProductGrid } from '@/components/ui/catalog/ProductGrid'
 import { motion } from 'framer-motion'
 import { Sparkles, Star, Flask, Shield, CheckCircle } from '@/components/ui/icons'
 
+// Helper function to format price
+const formatPrice = (price: number) => {
+  return `₦${price.toLocaleString('en-NG')}`
+}
+
 const FEATURED_PRODUCTS = [
   {
     id: '1',
     name: 'Advanced Immune Support Complex',
     description: 'Comprehensive immune system support with a powerful blend of vitamins, minerals, and antioxidants.',
-    price: 45.99,
+    price: 22500,
     image: '/products/product-1.jpg',
     category: 'Premium Supplements',
     rating: 4.9,
@@ -24,7 +29,7 @@ const FEATURED_PRODUCTS = [
     id: '2',
     name: 'Ultra Pure Omega-3 Elite',
     description: 'Pharmaceutical-grade fish oil with exceptional purity and potency for heart and brain health.',
-    price: 54.99,
+    price: 27000,
     image: '/products/product-2.jpg',
     category: 'Premium Supplements',
     rating: 4.8,
@@ -39,7 +44,7 @@ const FEATURED_PRODUCTS = [
     id: '3',
     name: 'Advanced Joint Support Formula',
     description: 'Professional-grade joint support supplement with glucosamine, chondroitin, and MSM.',
-    price: 49.99,
+    price: 24500,
     image: '/products/product-3.jpg',
     category: 'Wellness Solutions',
     rating: 4.7,
@@ -54,7 +59,7 @@ const FEATURED_PRODUCTS = [
     id: '4',
     name: 'Complete Probiotic Complex',
     description: 'Advanced probiotic formula with 15 strains of beneficial bacteria for optimal gut health.',
-    price: 39.99,
+    price: 19500,
     image: '/products/product-4.jpg',
     category: 'Digestive Health',
     rating: 4.9,
@@ -69,7 +74,7 @@ const FEATURED_PRODUCTS = [
     id: '5',
     name: 'Premium Sleep Support',
     description: 'Natural sleep aid combining melatonin, magnesium, and calming herbs for restful sleep.',
-    price: 34.99,
+    price: 17500,
     image: '/products/product-5.jpg',
     category: 'Sleep & Recovery',
     rating: 4.8,
@@ -84,7 +89,7 @@ const FEATURED_PRODUCTS = [
     id: '6',
     name: 'Professional Blood Pressure Monitor',
     description: 'Hospital-grade blood pressure monitoring system with smart connectivity and advanced features.',
-    price: 129.99,
+    price: 65000,
     image: '/products/product-6.jpg',
     category: 'Medical Devices',
     rating: 4.9,
