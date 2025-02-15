@@ -10,7 +10,7 @@ export default function ContactPage() {
             Speak with Our Friendly Team
           </h1>
           <p className="mt-4 text-xl leading-8 text-gray-600 max-w-xl mx-auto">
-            We'd love to assist you. Fill out the form or drop us an email.
+            We&apos;d love to assist you. Fill out the form or drop us an email.
           </p>
         </div>
         <ContactSection />

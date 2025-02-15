@@ -27,7 +27,7 @@ const ceo: TeamMember = {
   name: "Chief Dr. Peter Osaigede, MON",
   role: "Founder & Chief Executive Officer",
   imageUrl: "/our-team/ceo.jpg",
-  bio: "A distinguished business titan from Benin City, Edo State, Chief Dr. Peter Osaigede has revolutionized healthcare delivery in Nigeria.  he began into pharmaceuticals in the eary 90's, establishing St. Peter's Pharmacy as a beacon of excellence in healthcare. His visionary leadership and commitment to quality healthcare have earned him numerous accolades, including the Member of the Order of the Niger (MON) and the Edo State Excellence in Business Award.",
+  bio: "A distinguished business titan from Benin City, Edo State, Chief Dr. Peter Osaigede has revolutionized healthcare delivery in Nigeria. He began into pharmaceuticals in the early 90&apos;s, establishing St. Peter&apos;s Pharmacy as a beacon of excellence in healthcare. His visionary leadership and commitment to quality healthcare have earned him numerous accolades, including the Member of the Order of the Niger (MON) and the Edo State Excellence in Business Award.",
   credentials: ["MON", "FNPS", "FPSN"],
   specialties: ["Healthcare Innovation", "Strategic Investments", "Pharmaceutical Distribution"],
   social: {

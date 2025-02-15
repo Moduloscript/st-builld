@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils'
 
 const testimonialData = [
   {
-    content: "St Peter's Pharmacy has transformed my healthcare experience. Their professional staff and personalized service make managing my medications so much easier.",
+    content: "St Peter&apos;s Pharmacy has transformed my healthcare experience. Their professional staff and personalized service make managing my medications so much easier.",
     author: {
       name: 'Sarah Williams',
       role: 'Regular Customer',
@@ -15,7 +15,7 @@ const testimonialData = [
     },
   },
   {
-    content: "The pharmacists here are incredibly knowledgeable and always take time to explain my medications thoroughly. Best pharmacy service I've ever experienced!",
+    content: "The pharmacists here are incredibly knowledgeable and always take time to explain my medications thoroughly. Best pharmacy service I&apos;ve ever experienced!",
     author: {
       name: 'Michael Thompson',
       role: 'Patient',
@@ -31,7 +31,7 @@ const testimonialData = [
     },
   },
   {
-    content: "I appreciate how they remember my preferences and always provide thoughtful recommendations. It's like having a personal healthcare advisor.",
+    content: "I appreciate how they remember my preferences and always provide thoughtful recommendations. It&apos;s like having a personal healthcare advisor.",
     author: {
       name: 'James Foster',
       role: 'Local Resident',
@@ -47,7 +47,7 @@ const testimonialData = [
     },
   },
   {
-    content: "Their commitment to community health education and preventive care shows they're not just a pharmacy, but a true healthcare partner.",
+    content: "Their commitment to community health education and preventive care shows they&apos;re not just a pharmacy, but a true healthcare partner.",
     author: {
       name: 'Lisa Martinez',
       role: 'Healthcare Professional',

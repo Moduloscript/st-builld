@@ -8,7 +8,7 @@ export const timelineData = [
   {
     id: 1,
     title: "Pharmacy Founded",
-    description: "St Peter's Pharmacy was established with a mission to provide quality healthcare.",
+    description: "St Peter&apos;s Pharmacy was established with a mission to provide quality healthcare.",
     date: "2020-01-01"
   },
   {

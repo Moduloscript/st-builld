@@ -139,7 +139,7 @@ export const Logos = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="mt-4 text-base leading-7 text-gray-600 dark:text-gray-400"
           >
-            We partner with the world's most respected pharmaceutical companies to ensure quality healthcare delivery
+            We partner with the world&apos;s most respected pharmaceutical companies to ensure quality healthcare delivery
           </motion.p>
         </div>
 
