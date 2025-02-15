@@ -187,7 +187,7 @@ export function TestimonialsSection() {
             Trusted by Our Community
           </h2>
           <p className="mt-6 text-xl font-medium tracking-tight text-gray-600">
-            Discover why our community trusts St Peter's Pharmacy for all their healthcare needs.
+            Discover why our community trusts St Peter&apos;s Pharmacy for all their healthcare needs.
             Read what our valued customers have to say about their experiences with us.
           </p>
         </div>

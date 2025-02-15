@@ -56,7 +56,7 @@ export default function HeroSection() {
                 variants={fadeIn}
                 transition={{ delay: 0.4 }}
               >
-                Experience modern healthcare solutions with St Peter's Pharmacy. We combine professional expertise with cutting-edge technology to provide you with the best pharmaceutical care.
+                Experience modern healthcare solutions with St Peter&apos;s Pharmacy. We combine professional expertise with cutting-edge technology to provide you with the best pharmaceutical care.
               </motion.p>
 
               <motion.div

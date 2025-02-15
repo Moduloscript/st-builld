@@ -33,12 +33,12 @@ export function Header() {
                   <Image
                     className="h-8 w-auto"
                     src="/logo.svg"
-                    alt="St Peter's Pharmacy"
+                    alt="St Peter&apos;s Pharmacy"
                     width={32}
                     height={32}
                   />
                   <span className="ml-3 text-xl font-semibold text-gray-900">
-                    St Peter's Pharmacy
+                    St Peter&apos;s Pharmacy
                   </span>
                 </Link>
               </div>

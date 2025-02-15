@@ -36,7 +36,7 @@ export default function NewsletterSignup() {
             transition={{ duration: 0.5 }}
           >
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
-              Stay Updated with St Peter's Pharmacy
+              Stay Updated with St Peter&apos;s Pharmacy
             </h2>
             <p className="mt-4 text-lg leading-8 text-gray-600 dark:text-gray-400">
               Join our newsletter for health tips, wellness advice, and pharmacy updates.

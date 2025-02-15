@@ -22,7 +22,7 @@ export const ComplianceSection = () => {
         <div className="flex items-center gap-16">
           {/* How St Peter's Help You */}
           <div className="flex items-center gap-4 w-[25%]">
-            <span className="text-2xl font-medium text-gray-900">How St Peter's help you</span>
+            <span className="text-2xl font-medium text-gray-900">How St Peter&apos;s help you</span>
             <ArrowRight className="h-8 w-8 text-gray-900" strokeWidth={1.5} />
           </div>
 

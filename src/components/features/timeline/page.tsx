@@ -14,7 +14,7 @@ export default function Timeline() {
         <div className="lg:text-center">
           <h2 className="text-base text-blue-600 font-semibold tracking-wide uppercase">Our Journey</h2>
           <p className="mt-2 text-3xl leading-8 font-bold tracking-tight text-gray-900 sm:text-4xl">
-            The St Peter's Pharmacy Story
+            The St Peter&apos;s Pharmacy Story
           </p>
         </div>
         <div className="mt-10">

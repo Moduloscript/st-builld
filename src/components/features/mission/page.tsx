@@ -4,6 +4,7 @@ import { Heading, Lead, Subheading } from '@/components/ui/typography'
 import { motion, useInView, useSpring, useTransform, animate, useMotionValue } from 'framer-motion'
 import { HeartIcon, LightBulbIcon, UsersIcon } from '@heroicons/react/24/outline'
 import { useEffect, useRef, useState } from 'react'
+import Image from 'next/image'
 
 interface CounterProps {
   end: number;
@@ -79,30 +80,38 @@ function MissionHeader() {
         <div className="pt-20 lg:row-span-2 lg:-mr-16 xl:mr-auto">
           <div className="-mx-8 grid grid-cols-2 gap-4 sm:-mx-16 sm:grid-cols-4 lg:mx-0 lg:grid-cols-2 lg:gap-4 xl:gap-8">
             <div className="aspect-square overflow-hidden rounded-xl shadow-xl outline-1 -outline-offset-1 outline-emerald-100/50">
-              <img
+              <Image
                 alt="Healthcare professionals consulting with patient"
                 src="/mission/mission-1.jpg"
+                width={500}
+                height={500}
                 className="block size-full object-cover"
               />
             </div>
             <div className="-mt-8 aspect-square overflow-hidden rounded-xl shadow-xl outline-1 -outline-offset-1 outline-emerald-100/50 lg:-mt-32">
-              <img
+              <Image
                 alt="Modern healthcare interior"
                 src="/mission/mission-2.jpg"
+                width={500}
+                height={500}
                 className="block size-full object-cover"
               />
             </div>
             <div className="aspect-square overflow-hidden rounded-xl shadow-xl outline-1 -outline-offset-1 outline-emerald-100/50">
-              <img
+              <Image
                 alt="Health education session"
                 src="/mission/mission-3.jpg"
+                width={500}
+                height={500}
                 className="block size-full object-cover"
               />
             </div>
             <div className="-mt-8 aspect-square overflow-hidden rounded-xl shadow-xl outline-1 -outline-offset-1 outline-emerald-100/50 lg:-mt-32">
-              <img
+              <Image
                 alt="Digital healthcare services"
                 src="/mission/mission-4.jpg"
+                width={500}
+                height={500}
                 className="block size-full object-cover"
               />
             </div>

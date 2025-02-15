@@ -258,7 +258,7 @@ export function Team({ displayMode = 'section', className = '' }: TeamProps) {
               Leadership Team
             </h2>
             <p className="mt-6 text-lg leading-8 text-emerald-100">
-              Meet the dedicated professionals leading St. Peter's Pharmacy in our mission to provide exceptional healthcare services.
+              Meet St. Peter&apos;s dedicated healthcare team
             </p>
           </motion.div>
         </div>

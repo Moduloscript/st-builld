@@ -117,14 +117,14 @@ export default function Footer() {
             <div className="flex items-center space-x-3">
               <Image
                 src="/logo.svg"
-                alt="St. Peter's Pharmacy"
+                alt="St. Peter&apos;s Pharmacy"
                 width={40}
                 height={40}
                 className="h-10 w-auto"
               />
               <div>
                 <h3 className="text-lg font-bold text-white">
-                  St. Peter's Pharmacy
+                  St. Peter&apos;s Pharmacy
                 </h3>
                 <p className="text-sm text-emerald-300">
                   Caring for your health since 1995
@@ -253,7 +253,7 @@ export default function Footer() {
         >
           <div className="flex flex-col items-center justify-between gap-y-4 border-t border-emerald-800 pt-8 sm:flex-row">
             <p className="text-sm leading-5 text-emerald-300">
-              &copy; {new Date().getFullYear()} St. Peter's Pharmacy. All rights reserved.
+              &copy; {new Date().getFullYear()} St. Peter&apos;s Pharmacy. All rights reserved.
             </p>
             <div className="flex space-x-6">
               {navigation.legal.map((item) => (

@@ -78,7 +78,7 @@ export default function AboutPage() {
               className="space-y-8 pb-4"
             >
               <p className="text-xl text-emerald-100/90 leading-relaxed max-w-xl">
-                St Peter's Pharmacy leads in innovative healthcare solutions, ensuring every patient receives personalized attention and expert care for their unique health journey.
+                St Peter&apos;s Pharmacy leads in innovative healthcare solutions, ensuring every patient receives personalized attention and expert care for their unique health journey.
               </p>
               <div>
                 <motion.button

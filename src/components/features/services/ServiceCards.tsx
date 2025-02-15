@@ -35,7 +35,7 @@ export const ServiceCards = () => {
             className="max-w-lg text-3xl font-semibold md:text-4xl text-white"
           >
             Professional Healthcare Services at
-            <span className="text-emerald-300"> St Peter's Pharmacy</span>
+            <span className="text-emerald-300"> St Peter&apos;s Pharmacy</span>
           </motion.h2>
           <motion.button
             whileHover={{ scale: 1.02 }}
@@ -99,7 +99,7 @@ export const ServiceCards = () => {
             className="col-span-12 md:col-span-8"
             icon={<UserRound className="h-6 w-6 text-emerald-400" />}
             title="Personalized Care"
-            description={`We&apos;re committed to providing personalized care that goes beyond just dispensing medication.`}
+            description={`St Peter&apos;s Pharmacy offers comprehensive personalized care that goes beyond just dispensing medication.`}
           />
         </div>
       </motion.div>
