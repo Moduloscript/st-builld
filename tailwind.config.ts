@@ -62,6 +62,8 @@ const config: Config = {
         "scroll-down": "scroll-down var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
         "scroll": "scroll 40s linear infinite",
         "shine": "shine 8s ease-in-out infinite",
+        "testimonial-scroll-up": "testimonial-scroll-up var(--duration, 40s) linear infinite",
+        "testimonial-scroll-down": "testimonial-scroll-down var(--duration, 40s) linear infinite"
       },
       keyframes: {
         "fade-in": {
@@ -108,6 +110,14 @@ const config: Config = {
           "0%": { transform: "translateX(-100%)" },
           "50%, 100%": { transform: "translateX(100%)" },
         },
+        "testimonial-scroll-up": {
+          "0%": { transform: "translateY(0)" },
+          "100%": { transform: "translateY(-50%)" }
+        },
+        "testimonial-scroll-down": {
+          "0%": { transform: "translateY(-50%)" },
+          "100%": { transform: "translateY(0)" }
+        }
       },
       borderRadius: {
         lg: "var(--radius)",

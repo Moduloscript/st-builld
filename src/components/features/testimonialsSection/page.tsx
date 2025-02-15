@@ -130,10 +130,7 @@ function InfiniteMovingCards({
     if (!container) return
 
     const duration = speed === 'fast' ? 20 : speed === 'normal' ? 30 : 40
-
     container.style.setProperty('--duration', `${duration}s`)
-
-    // Add duplicate items for seamless loop
     setStart(true)
   }, [speed])
 
@@ -141,39 +138,37 @@ function InfiniteMovingCards({
     <div
       ref={containerRef}
       className={cn(
-        'relative flex flex-col gap-4 overflow-hidden py-4 h-full',
+        'relative flex flex-col gap-4 overflow-hidden py-4 h-[600px]',
         className
       )}
     >
       {/* Gradient Overlays */}
-      <div className="absolute top-0 inset-x-0 h-24 bg-gradient-to-b from-white via-white/70 to-transparent z-20 pointer-events-none" />
-      <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-white via-white/70 to-transparent z-20 pointer-events-none" />
+      <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-white via-white/70 to-transparent z-20 pointer-events-none" />
+      <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-white via-white/70 to-transparent z-20 pointer-events-none" />
       
       {/* Scrolling Content */}
-      <div className="flex flex-col gap-4">
-        <div
-          className={cn(
-            'flex flex-col gap-4 animate-scroll',
-            direction === 'up' ? 'animate-scroll-up' : 'animate-scroll-down'
-          )}
-        >
-          {/* Original items */}
-          {items.map((item, idx) => (
-            <TestimonialCard
-              key={idx}
-              testimonial={item}
-              className="transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl"
-            />
-          ))}
-          {/* Duplicate items for seamless loop */}
-          {items.map((item, idx) => (
-            <TestimonialCard
-              key={`clone-${idx}`}
-              testimonial={item}
-              className="transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl"
-            />
-          ))}
-        </div>
+      <div 
+        className={cn(
+          'flex flex-col gap-4 transition-transform duration-500',
+          start ? (direction === 'up' ? 'animate-scroll-up' : 'animate-scroll-down') : 'translate-y-0'
+        )}
+      >
+        {/* Original items */}
+        {items.map((item, idx) => (
+          <TestimonialCard
+            key={idx}
+            testimonial={item}
+            className="transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl"
+          />
+        ))}
+        {/* Duplicate items for seamless loop */}
+        {items.map((item, idx) => (
+          <TestimonialCard
+            key={`clone-${idx}`}
+            testimonial={item}
+            className="transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl"
+          />
+        ))}
       </div>
     </div>
   )

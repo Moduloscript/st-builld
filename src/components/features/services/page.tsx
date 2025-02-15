@@ -11,6 +11,7 @@ import {
   Stethoscope, 
   ClipboardList 
 } from 'lucide-react'
+import Image from 'next/image'
 
 const DURATION = 0.4;
 const STAGGER = 0.03;
@@ -65,10 +66,11 @@ const FlipText = ({ children }) => {
 }
 
 const serviceImages = {
-  prescription: '/services/prescription.jpg',
-  consultation: '/services/consultation.jpg',
-  nursing: '/services/nurse.jpg',
-  records: '/services/records.jpg',
+  'Health Monitoring': '/displayService/Monitoring.jpg',
+  'Prescription Services': '/displayService/PresServices.jpg',
+  'Wholesale & Retail': '/displayService/WholesaleRetail.jpg',
+  'Medical Consultations': '/displayService/CServices.jpg',
+  'Medical Therapy': '/displayService/MedTheraphy.jpg'
 }
 
 function ServiceImage({ service }: { service: typeof services[0] }) {
@@ -108,9 +110,11 @@ function ServiceImage({ service }: { service: typeof services[0] }) {
           ease: [0.32, 0.72, 0, 1]
         }}
       >
-        <img
+        <Image
           src={service.image}
           alt=""
+          width={400}
+          height={400}
           className="h-full w-full object-cover"
         />
       </motion.div>
@@ -134,9 +138,11 @@ function ServiceImage({ service }: { service: typeof services[0] }) {
           ease: [0.32, 0.72, 0, 1]
         }}
       >
-        <img
+        <Image
           src={service.image}
           alt={service.title}
+          width={400}
+          height={400}
           className="absolute inset-0 h-full w-full select-none object-cover"
         />
 
@@ -204,28 +210,34 @@ function ServiceImage({ service }: { service: typeof services[0] }) {
 
 const services = [
   {
-    title: 'Prescription Services',
+    title: 'Health Monitoring',
     icon: <Pill className="h-4 w-4" />,
-    image: serviceImages.prescription,
-    description: 'Expert prescription processing with thorough medication reviews, ensuring safety and accuracy. We offer convenient refill services and medication synchronization for your convenience.'
+    image: serviceImages['Health Monitoring'],
+    description: 'Expert health monitoring services with thorough reviews, ensuring safety and accuracy.'
   },
   {
-    title: 'Health Consultations',
+    title: 'Prescription Services',
     icon: <Stethoscope className="h-4 w-4" />,
-    image: serviceImages.consultation,
-    description: 'Professional health consultations with our experienced pharmacists for personalized care and advice.'
+    image: serviceImages['Prescription Services'],
+    description: 'Professional prescription processing with thorough medication reviews, ensuring safety and accuracy.'
   },
   {
-    title: 'Medication Management',
+    title: 'Wholesale & Retail',
     icon: <Syringe className="h-4 w-4" />,
-    image: serviceImages.nursing,
-    description: 'Comprehensive medication therapy management, including detailed counseling on proper usage, potential interactions, and side effects monitoring for optimal health outcomes.'
+    image: serviceImages['Wholesale & Retail'],
+    description: 'Comprehensive wholesale and retail services for your convenience.'
   },
   {
-    title: 'Healthcare Records',
+    title: 'Medical Consultations',
     icon: <ClipboardList className="h-4 w-4" />,
-    image: serviceImages.records,
-    description: 'Secure and organized healthcare record management to ensure continuity of care and easy access to your medical history.'
+    image: serviceImages['Medical Consultations'],
+    description: 'Expert medical consultations with our experienced professionals for personalized care and advice.'
+  },
+  {
+    title: 'Medical Therapy',
+    icon: <Pill className="h-4 w-4" />,
+    image: serviceImages['Medical Therapy'],
+    description: 'Comprehensive medical therapy management, including detailed counseling on proper usage, potential interactions, and side effects monitoring for optimal health outcomes.'
   },
 ]
 
