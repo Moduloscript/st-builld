@@ -60,12 +60,6 @@ const logos: Logo[] = [
     height: 40
   },
   {
-    name: "Bayer",
-    logo: "/logos/bayer.svg",
-    width: 140,
-    height: 40
-  },
-  {
     name: "Merck",
     logo: "/logos/merck.svg",
     width: 150,

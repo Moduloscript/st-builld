@@ -99,7 +99,7 @@ export const ServiceCards = () => {
             className="col-span-12 md:col-span-8"
             icon={<UserRound className="h-6 w-6 text-emerald-400" />}
             title="Personalized Care"
-            description={`St Peter&apos;s Pharmacy offers comprehensive personalized care that goes beyond just dispensing medication.`}
+            description={`St Peters Pharmacy offers comprehensive personalized care that goes beyond just dispensing medication.`}
           />
         </div>
       </motion.div>

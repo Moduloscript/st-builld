@@ -29,15 +29,15 @@ export const ComplianceSection = () => {
           <AnimatedImageGrid
             images={[
               {
-                src: "/displayService/Health Monitoring.jpg",
+                src: "/displayService/Monitoring.jpg",
                 alt: "Comprehensive Health Monitoring"
               },
               {
-                src: "/displayService/wholesale & Retail.jpg",
+                src: "/displayService/wholesaleRetail.jpg",
                 alt: "Professional Pharmacy Services"
               },
               {
-                src: "/displayService/prescription services.jpg",
+                src: "/displayService/presServices.jpg",
                 alt: "Expert Prescription Management"
               }
             ]}

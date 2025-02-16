@@ -6,7 +6,7 @@ export function ContactSection() {
     <div className="mt-16 grid grid-cols-1 gap-x-12 gap-y-12 lg:grid-cols-2">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
         {/* Email Us */}
-        <div className="rounded-2xl border border-gray-200/70 bg-white p-8 shadow-sm transition-all hover:border-green-600/20 hover:shadow-md">
+        <div className="rounded-2xl border border-accent-200/70 bg-card p-8 shadow-md transition-all hover:scale-105">
           <div className="flex gap-x-4">
             <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-green-600/10">
               <EnvelopeIcon className="h-6 w-6 text-green-700" />
@@ -22,7 +22,7 @@ export function ContactSection() {
         </div>
 
         {/* Live Chat Support */}
-        <div className="rounded-2xl border border-gray-200/70 bg-white p-8 shadow-sm transition-all hover:border-green-600/20 hover:shadow-md">
+        <div className="rounded-2xl border border-accent-200/70 bg-card p-8 shadow-md transition-all hover:scale-105">
           <div className="flex gap-x-4">
             <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-green-600/10">
               <ChatBubbleLeftRightIcon className="h-6 w-6 text-green-700" />
@@ -38,7 +38,7 @@ export function ContactSection() {
         </div>
 
         {/* Visit Us */}
-        <div className="rounded-2xl border border-gray-200/70 bg-white p-8 shadow-sm transition-all hover:border-green-600/20 hover:shadow-md">
+        <div className="rounded-2xl border border-accent-200/70 bg-card p-8 shadow-md transition-all hover:scale-105">
           <div className="flex gap-x-4">
             <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-green-600/10">
               <MapPinIcon className="h-6 w-6 text-green-700" />
@@ -55,7 +55,7 @@ export function ContactSection() {
         </div>
 
         {/* Call Us */}
-        <div className="rounded-2xl border border-gray-200/70 bg-white p-8 shadow-sm transition-all hover:border-green-600/20 hover:shadow-md">
+        <div className="rounded-2xl border border-accent-200/70 bg-card p-8 shadow-md transition-all hover:scale-105">
           <div className="flex gap-x-4">
             <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-green-600/10">
               <PhoneIcon className="h-6 w-6 text-green-700" />
