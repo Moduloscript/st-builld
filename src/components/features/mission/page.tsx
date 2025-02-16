@@ -65,7 +65,7 @@ function MissionHeader() {
         <div className="max-w-lg">
           <h2 className="text-2xl font-medium tracking-tight text-emerald-800">Our Mission</h2>
           <p className="mt-6 text-lg leading-8 text-gray-600">
-            At St Peter's Pharmacy, we’re committed to providing comprehensive healthcare
+            At St Peter&apos;s Pharmacy, we&apos;re committed to providing comprehensive healthcare
             services and health education. Through our range of professional
             services, we ensure that every
             customer receives personalized attention and expert care.

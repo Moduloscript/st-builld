@@ -6,7 +6,7 @@
     "react/no-unescaped-entities": [
       "error",
       {
-        "forbid": ["'", ">", "}"]
+        "forbid": [">", "}"]
       }
     ]
   }
