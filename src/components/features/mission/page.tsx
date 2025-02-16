@@ -58,20 +58,20 @@ function MissionHeader() {
     <Container className="mt-16">
       <Heading as="h1">Empowering Health Through Accessible Care</Heading>
       <Lead className="mt-6 max-w-3xl text-gray-600">
-        We&#39;re on a mission to transform healthcare delivery by combining modern pharmaceutical
+        We are on a mission to transform healthcare delivery by combining modern pharmaceutical
         services with personalized care and education.
       </Lead>
       <section className="mt-16 grid grid-cols-1 lg:grid-cols-2 lg:gap-12">
         <div className="max-w-lg">
           <h2 className="text-2xl font-medium tracking-tight text-emerald-800">Our Mission</h2>
           <p className="mt-6 text-lg leading-8 text-gray-600">
-            At St Peter&#39;s Pharmacy, we&#39;re committed to providing comprehensive healthcare
+            At St Peter's Pharmacy, we’re committed to providing comprehensive healthcare
             services and health education. Through our range of professional
             services, we ensure that every
             customer receives personalized attention and expert care.
           </p>
           <p className="mt-8 text-sm/6 text-gray-600">
-            We believe in patient-centered care — taking the time to understand each individual&#39;s
+            We believe in patient-centered care — taking the time to understand each individual’s
             unique health needs and providing tailored solutions. Through our comprehensive
             services, from health education to preventive care, we ensure that every
             patient receives the attention and care they deserve.
@@ -194,7 +194,7 @@ function Values() {
     },
     {
       title: "Community Wellness",
-      description: "We&#39;re committed to promoting health education and preventive care to build a healthier community.",
+      description: "We’re committed to promoting health education and preventive care to build a healthier community.",
       icon: UsersIcon,
       gradient: "from-emerald-400 to-teal-600",
       shadowColor: "shadow-emerald-200"
